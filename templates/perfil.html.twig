@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	
+	<head>
+
+	<title>{% block title %}Perfil{% endblock %}</title>
+	{% block stylesheets %}
+	<link href="build/principal.css" type="text/css" rel="stylesheet" />
+	{% endblock %}
+	</head>
+
+{% endblock %}
+
+{% block body %}
+
+<header class="container-fluid">
+
+	<div class="row">
+		<div id="imagen" class="col-sm-4"><img src="images/logo2.png"></div>
+		<div class="col-8">
+			<nav class=" float-right">
+				<a href="/amigos">Amigos</a>
+				<a href="/verPerfil">Perfil</a>
+				<a href="/eventos">Eventos</a>
+				<a href="/logout">Salir</a>
+			</nav>
+		</div>
+
+	</div>
+
+</header>
+
+<section>
+
+	<div class="container-fluid">
+		
+		<div class="row">
+			
+			<div class="col-2">
+				
+				<img src="images/perfil.png" alt="Imagen de perfil"><br>
+				<input type="button" name="" value="Cambiar imagen"><br>
+				<div><textarea name="descripcion">Aquí iría la descripción que se ha puesto el usuario</textarea></div>
+
+			</div>
+			<div class="col-10" id="perfilImagenes">
+				
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				<div><input type="button" name="" value="&times" class="eliminarImagen"><img src="images/logo2.png"></div>
+				
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+	<script type="text/javascript">
+
+	$("button").click(function(){
+
+		// alert("prueba");
+	});
+
+
+
+	</script>
+{% endblock %}

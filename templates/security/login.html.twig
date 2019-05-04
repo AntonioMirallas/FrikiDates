@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+    
+    <head>
+
+    <title>{% block title %}Portada{% endblock %}</title>
+    {% block stylesheets %}
+    <link href="build/portada.css" type="text/css" rel="stylesheet" />
+    {% endblock %}
+    </head>
+
+{% endblock %}
+
+{% block body %}
+
+<header class="container-fluid">
+
+    <div class="row">
+        <div id="imagen" class="col-sm-4"><img src="images/logo2.png"></div>
+        <div class="col-sm-4" id="mostrar"><h1 class="text-center">FrikiDates</h1><br><h2 class="text-center">El lugar ideal para amantes de la cultura friki</h2></div>
+        <div class="col-4" id="boton"><button class="button"> <i class="fa fa-bars"></i> </button><button class="button"> Login </button></div>
+        <div class="col-12" id="ocultar"><h1 class="text-center">FrikiDates</h1><br><h2 class="text-center">El lugar ideal para amantes de la cultura friki</h2></div>
+    </div>
+
+</header>
+
+<section>
+
+    <form method="post">
+
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <label for="inputEmail" class="sr-only">Email</label>
+    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+    <label for="inputPassword" class="sr-only">Password</label>
+    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+
+    <button class="btn btn-lg btn-primary" type="submit">
+        Sign in
+    </button>
+</form>
+
+    <div id="formRegister">
+
+        <div  class="row">
+            <div class="col-3"></div>
+                                
+            <div class="col-6" id="registro">
+
+                <form action="/" method="POST">
+                    
+                    Email: <br><input type="text" name="email" value=""><br>
+                    Nombre: <br><input type="text" name="nombre" value=""><br>
+                    Ciudad:<br>
+                    <select name="ciudad">
+                      <option value="...Elige Ciudad...">...Elige Ciudad...</option>
+                      <option value="Granada">Granada</option>
+                      <option value="Barcelona">Barcelona</option>
+                      <option value="Madrid">Madrid</option>
+                      <option value="Bilbao">Bilbao</option>
+                      <option value="Valencia">Valencia</option>
+                      <option value="A Coruña">A Coruña</option>
+                      <option value="Zaragoza">Zaragoza</option>
+                      <option value="Salamanca">Salamanca</option>
+                    </select><br>
+                    Edad:<br><input type="number" name="edad" min="18" max="80"><br>
+                    Contraseña:<br> <input type="password" name="contra1" value=""><br>
+                    Repite contraseña:<br> <input type="password" name="contra2" value=""><br>
+                    <input type="submit" name="registro" value="Registrarse"><br>   
+
+                </form>
+
+                <button id="registroBoton">Regístrate</button>
+
+            </div>
+
+            </div>
+
+        <div class="col-3"></div>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+    <script type="text/javascript">
+
+    $(function(){
+
+        $("")
+
+        $("#registroBoton").click(function(){
+
+            $("#registro form").css("display", "inline");
+            $(this).css("display", "none");
+        });
+
+        $('#registro form').submit(function () {
+
+            if($("#registro select").val() == "...Elige Ciudad..." || $("input[name=email]").val() == "" || $("input[name=nombre]").val() == "" || $("input[name=contra1]").val() == "" || $("input[name=contra2]").val() == "" || $("input[name=contra1]").val() != $("input[name=contra2]").val()){
+
+                alert("error");
+                return false;
+
+            };
+
+        });
+
+    });
+
+    </script>
+{% endblock %}

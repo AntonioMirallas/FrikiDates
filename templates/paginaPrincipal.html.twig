@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+
+{% block head %}
+	
+	<head>
+
+	<title>{% block title %}Página principal{% endblock %}</title>
+	{% block stylesheets %}
+	<link href="build/principal.css" type="text/css" rel="stylesheet" />
+	{% endblock %}
+	</head>
+
+{% endblock %}
+
+{% block body %}
+
+<header class="container-fluid">
+
+	<div class="row">
+		<div id="imagen" class="col-sm-4"><img src="images/logo2.png"></div>
+		<div class="col-1"></div>
+		<div class="col-3">Búsqueda <input type="text" name="busqueda"></div>
+		<div class="col-4" id="boton"><div class="float-right dropdown"><button id="mensaje"> <i class="fa fa-envelope-o"></i> </button><button class="btn btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/perfil.png" id="perfil"></button><div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+		    <a class="dropdown-item" href="/perfil">Perfil</a>
+		    <a class="dropdown-item" href="#">Another action</a>
+		    <a class="dropdown-item" href="#">Salir</a>
+  		</div>
+		</div></div>
+	</div>
+
+</header>
+
+<section>
+
+	<div class="container-fluid">
+		<div class="row">
+  		
+  		<div class="col-12 col-sm-6">
+	  		<h3>Hola {{usuario.nombre}}. ¿Es esta tu primera vez? ¿Qué tal si empiezas por rellenar este formulario para recoger tu perfil?</h3>
+	  		
+	  		<form action="/grafico" method="POST">
+
+	  			{% for objeto in objetos %}
+	  				{{objeto.texto}}<br>
+	  				<input type="radio" name="{{objeto.id}}" value="{{objeto.falsa1}}" id="{{objeto.id}}~falsa1"><label for="{{objeto.id}}~falsa1">{{objeto.falsa1}}</label><br>
+	  				<input type="radio" name="{{objeto.id}}" value="{{objeto.falsa2}}" id="{{objeto.id}}~falsa2"><label for="{{objeto.id}}~falsa2">{{objeto.falsa2}}</label><br>
+	  				<input type="radio" name="{{objeto.id}}" value="{{objeto.falsa3}}" id="{{objeto.id}}~falsa3"><label for="{{objeto.id}}~falsa3">{{objeto.falsa3}}</label><br>
+	  				<input type="radio" name="{{objeto.id}}" value="{{objeto.correcta}}" id="{{objeto.id}}~correcta"><label for="{{objeto.id}}~correcta">{{objeto.correcta}}</label><br>
+
+	  			{% endfor %}
+
+	  			<input type="submit" name="formularioTerminado" value="He terminado">
+
+	  		</form>
+
+  		</div>
+  		<div class="col-12 col-sm-6 text-center" id="imagenes">
+
+  			<div class="">¿Qué clase de friki eres?</div>
+
+  			¿Manta y peli?
+  			<img src="images/serie1.jpg"><br>
+  			<img src="images/comic1.jpg">¡Nada como la lectura!<br>
+  			Mi mando es mi amigo<img src="images/videojuego1.jpg"><br>
+  			<img src="images/anime1.jpg">Nissa<br>
+
+  		</div>
+		
+		</div>
+	</div>
+
+</section>
+
+{% endblock %}
+
+{% block javascripts %}
+
+	<script type="text/javascript">
+
+	$("button").click(function(){
+
+		// alert("prueba");
+	});
+
+
+
+	</script>
+{% endblock %}
